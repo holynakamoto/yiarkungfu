@@ -1,0 +1,20 @@
+# Godot-specific gitattributes
+*.tscn merge=union
+*.tres merge=union
+*.gd diff=gd
+*.shader diff=gd
+
+# Normalize line endings
+* text=auto eol=lf
+
+# Binary files
+*.translation binary
+*.import binary
+*.ctex binary
+*.stex binary
+*.mp3 binary
+*.wav binary
+*.ogg binary
+*.png binary
+*.jpg binary
+*.webp binary

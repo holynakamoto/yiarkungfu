@@ -1,5 +1,7 @@
 # Yie Ar Kung-Fu - Agentic Rebirth
 
+[![Godot CI](https://github.com/holynakamoto/yiarkungfu/actions/workflows/godot-ci.yml/badge.svg)](https://github.com/holynakamoto/yiarkungfu/actions/workflows/godot-ci.yml)
+
 **Status:** Phase 1 Complete ✓
 
 ## Project Overview
@@ -77,6 +79,23 @@ YieArKungFu_Rebirth/
     ├── sprites/           ← (Ready for pixel art)
     └── audio/             ← (Ready for SFX)
 ```
+
+### CI/CD Pipeline
+
+The project includes automated GitHub Actions workflows:
+
+**Automated Checks (Every Push/PR):**
+- ✓ Script validation (checks for parse errors in all .gd files)
+- ✓ Project loading verification (smoke test)
+- ✓ Web build export (validates export presets)
+
+**Build Artifacts:**
+- Web builds are automatically exported and available for download
+- Future: Desktop builds (Linux, Windows, macOS)
+- Future: Automated testing with gdUnit4
+
+**Workflow Status:**
+Check the badge at the top of this README for current build status.
 
 ### Key Implementation Details
 
