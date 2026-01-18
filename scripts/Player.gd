@@ -166,10 +166,14 @@ func _get_move_key(button: String) -> String:
 		# Air attacks
 		key = "air_"
 
-		# Use buffered direction for aerial direction
-		if buffered_direction.x > 0:
+		# Use buffered direction for aerial direction (accounting for facing)
+		if buffered_direction.x > 0 and is_facing_right:
 			key += "forward_"
-		elif buffered_direction.x < 0:
+		elif buffered_direction.x < 0 and not is_facing_right:
+			key += "forward_"
+		elif buffered_direction.x > 0 and not is_facing_right:
+			key += "back_"
+		elif buffered_direction.x < 0 and is_facing_right:
 			key += "back_"
 		else:
 			key += "neutral_"

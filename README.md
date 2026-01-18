@@ -60,7 +60,7 @@ A faithful recreation of the 1985 arcade classic with modern tooling but authent
    - Hitboxes defined but no collision response (needs opponent)
 
 ### Project Structure
-```
+```text
 YieArKungFu_Rebirth/
 ├── CLAUDE.md               ← Master PRD (always reference this!)
 ├── README.md               ← This file
@@ -93,7 +93,7 @@ YieArKungFu_Rebirth/
 
 ### Console Debug Output
 When running, you should see logs like:
-```
+```text
 [Player] Ready | State: IDLE | Health: 100
 [Player] 16-Move Matrix loaded with 16 moves
 [Player] State: IDLE → WALK

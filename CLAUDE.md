@@ -13,7 +13,7 @@
 Movement is not "modern." Attacks are determined by `Direction + Button` at the moment of press.
 
 **Complete Move Matrix:**
-```
+```text
 PUNCH BUTTON:
 - Neutral + Punch = High Punch (standing jab)
 - Forward + Punch = Forward Punch (reach attack)
@@ -184,7 +184,7 @@ Use a `BaseCharacter` inheritance model for all characters.
 - **Archetype:** Stationary Turret
 - **AI Logic:**
   - Stays in center of screen
-  - Breathes fire in horizontal line (full screen width)
+  - Breathes fire in horizontal line (full-screen width)
   - Fire lasts 15 frames
   - 2-second cooldown between breaths
 
@@ -241,7 +241,7 @@ enum State {
 ```
 
 ### State Transitions
-```
+```text
 IDLE → WALK: Input direction != 0
 IDLE → JUMP_START: Jump input + on_floor()
 JUMP_START → JUMP: After 1 frame
@@ -327,7 +327,7 @@ Any → DEAD: health <= 0
 - **Godot 4.3** (or latest 4.x stable)
 
 ### Project Structure
-```
+```text
 YieArKungFu_Rebirth/
 ├── CLAUDE.md (this file)
 ├── project.godot
@@ -376,7 +376,7 @@ YieArKungFu_Rebirth/
 ## 7. AI Behavior Trees (Detailed)
 
 ### Star (Zoner) Behavior Tree
-```
+```text
 ROOT (Selector)
 ├── Sequence: "Throw Shuriken"
 │   ├── Condition: distance_to_player > 200
@@ -396,7 +396,7 @@ ROOT (Selector)
 ```
 
 ### Fan (Sine-Wave Projectile) Behavior Tree
-```
+```text
 ROOT (Selector)
 ├── Sequence: "Throw Fan"
 │   ├── Condition: distance_to_player > 150
@@ -415,7 +415,7 @@ ROOT (Selector)
 ```
 
 ### Buchu (Headbutt) Behavior Tree
-```
+```text
 ROOT (Selector)
 ├── Sequence: "Leaping Headbutt"
 │   ├── Condition: distance_to_player in [150, 300]
@@ -463,7 +463,7 @@ ROOT (Selector)
 ### Phase 3 Tests
 - [ ] Star AI throws shurikens at 3 heights
 - [ ] Star backs away when player approaches
-- [ ] Projectiles despawn offscreen
+- [ ] Projectiles despawn off-screen
 - [ ] Hit detection works (player vs shuriken, player vs Star)
 - [ ] Win condition triggers when Star's health = 0
 
@@ -479,7 +479,7 @@ ROOT (Selector)
 - **Log state changes:** Use `print()` to verify FSM flow
 
 ### Prompt Templates
-```
+```text
 "Implement [Feature] according to CLAUDE.md section [X]"
 "Debug why [Behavior] isn't matching CLAUDE.md spec"
 "Add the next character from CLAUDE.md roster: [Name]"
@@ -499,6 +499,6 @@ ROOT (Selector)
 
 ---
 
-**END OF MASTER CONTEXT DOCUMENT**
+## END OF MASTER CONTEXT DOCUMENT
 
 *Remember: This is 1985 arcade perfection, not 2026 handholding. Every frame matters. Every hitbox is deliberate. Make Yie Ar Kung-Fu feel like it was coded in 6502 assembly, but with the power of Godot 4.*

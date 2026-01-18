@@ -28,6 +28,7 @@ shape = SubResource("RectangleShape2D_floor")
 position = Vector2(200, 400)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+enabled = true
 position = Vector2(320, 240)
 zoom = Vector2(2, 2)
 

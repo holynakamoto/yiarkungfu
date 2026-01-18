@@ -30,7 +30,7 @@ const HITSTUN_FRAMES: int = 20
 
 # Exported Variables (tweakable in Inspector)
 @export var max_health: int = 100
-@export var damage_flash_color: Color = Color.WHITE
+@export var damage_flash_color: Color = Color(10.0, 10.0, 10.0, 1.0)  # Bright white flash (HDR)
 @export var knockback_force: float = 150.0
 
 # State
@@ -46,6 +46,10 @@ var hitstun_timer: int = 0
 var hit_stop_timer: int = 0
 var flash_timer: int = 0
 var can_act: bool = true
+var original_modulate: Color = Color.WHITE
+
+# State Timers
+var jump_start_frames: int = 0  # Counts frames in JUMP_START state
 
 # Node References (must be set in scene or _ready)
 var anim: AnimationPlayer
@@ -83,11 +87,13 @@ func _physics_process(delta: float) -> void:
 
 	# Handle flash effect
 	if flash_timer > 0:
-		flash_timer -= 1
+		# Keep the flash color applied
 		if sprite:
 			sprite.modulate = damage_flash_color
+		flash_timer -= 1
+		# Restore original color when flash ends
 		if flash_timer == 0 and sprite:
-			sprite.modulate = Color.WHITE
+			sprite.modulate = original_modulate
 
 	# Handle hitstun
 	if hitstun_timer > 0:
@@ -159,8 +165,11 @@ func _state_jump_start(delta: float) -> void:
 	jump_start_velocity = velocity
 	velocity.y = 0  # Don't apply gravity yet
 
-	# Transition immediately to JUMP after 1 frame
-	transition_to(State.JUMP)
+	# Wait 1 frame before transitioning to JUMP
+	if jump_start_frames > 0:
+		jump_start_frames -= 1
+		if jump_start_frames == 0:
+			transition_to(State.JUMP)
 
 
 func _state_jump(delta: float) -> void:
@@ -254,8 +263,8 @@ func transition_to(new_state: State) -> void:
 				anim.play("walk")
 
 		State.JUMP_START:
-			# Will transition to JUMP immediately next frame
-			pass
+			# Set 1-frame delay before transitioning to JUMP
+			jump_start_frames = 1
 
 		State.JUMP:
 			velocity.y = JUMP_VELOCITY
@@ -298,7 +307,9 @@ func take_damage(amount: int, attacker_position: Vector2) -> void:
 	velocity.x = knockback_dir * knockback_force
 	velocity.y = -100  # Slight upward pop
 
-	# Visual feedback
+	# Visual feedback - save original color before flashing
+	if sprite and flash_timer == 0:
+		original_modulate = sprite.modulate
 	flash_timer = FLASH_FRAMES
 
 	# Screen shake would go here (handled by camera in main scene)
