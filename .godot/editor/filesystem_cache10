@@ -1,5 +1,5 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1768773282
+::res://::1768773848
 CLAUDE.md::TextFile::-1::1768773203::0::1::::<><><>0<>0<><>::
 icon.svg::CompressedTexture2D::2590034636027931387::1768773203::1768773283::1::::<><><>0<>0<>b46d7a1a573eaaa3f473396d88ea9445<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 README.md::TextFile::-1::1768773203::0::1::::<><><>0<>0<><>::
@@ -8,6 +8,6 @@ main.tscn::PackedScene::3137462493077425651::1768773203::0::1::::<><><>0<>0<><>:
 ::res://scenes/characters/::1768773203
 BaseCharacter.tscn::PackedScene::4666929464984018349::1768773203::0::1::::<><><>0<>0<><>::res://scripts/BaseCharacter.gd
 Player.tscn::PackedScene::6853056764869732880::1768773203::0::1::::<><><>0<>0<><>::uid://b7qxv8jy4hq6h::::res://scenes/characters/BaseCharacter.tscn<>res://scripts/Player.gd
-::res://scripts/::1768773203
+::res://scripts/::1768773283
 BaseCharacter.gd::GDScript::2939408611490986303::1768773203::0::1::::BaseCharacter<>CharacterBody2D<><>0<>0<><>::
 Player.gd::GDScript::7586925285132300578::1768773203::0::1::::Player<>BaseCharacter<><>0<>0<><>::
