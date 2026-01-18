@@ -88,7 +88,7 @@ func _get_directional_input() -> Vector2:
 	# Check for down input (crouch/down attacks)
 	# Note: In Godot, we don't have a default "move_down" action
 	# We'll use S key or Down arrow for this
-	if Input.is_key_pressed(KEY_S) or Input.is_key_pressed(KEY_DOWN):
+	if Input.is_physical_key_pressed(KEY_S) or Input.is_physical_key_pressed(KEY_DOWN):
 		input_dir.y = 1
 
 	return input_dir
