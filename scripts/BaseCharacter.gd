@@ -76,7 +76,7 @@ func _ready() -> void:
 		damage_area.area_entered.connect(_on_damage_area_entered)
 
 	# Debug logging
-	print("[%s] Ready | State: %s | Health: %d" % [name, State.keys()[current_state], health])
+	print("[%s] Ready | State: %s | Health: %d" % [name, get_state_name(current_state), health])
 
 
 func _physics_process(delta: float) -> void:
@@ -249,7 +249,7 @@ func transition_to(new_state: State) -> void:
 	current_state = new_state
 
 	# Debug logging
-	print("[%s] State: %s → %s" % [name, State.keys()[old_state], State.keys()[new_state]])
+	print("[%s] State: %s → %s" % [name, get_state_name(old_state), get_state_name(new_state)])
 
 	# State entry logic
 	match new_state:
@@ -301,7 +301,7 @@ func take_damage(amount: int, attacker_position: Vector2) -> void:
 	print("[%s] Took %d damage | Health: %d/%d" % [name, amount, health, max_health])
 
 	# Apply knockback
-	var knockback_dir := sign(global_position.x - attacker_position.x)
+	var knockback_dir: int = int(sign(global_position.x - attacker_position.x))
 	if knockback_dir == 0:
 		knockback_dir = -1 if is_facing_right else 1
 	velocity.x = knockback_dir * knockback_force
@@ -354,6 +354,20 @@ func _on_damage_area_entered(area: Area2D) -> void:
 # ============================================================================
 # HELPER FUNCTIONS
 # ============================================================================
+
+func get_state_name(state: State) -> String:
+	match state:
+		State.IDLE: return "IDLE"
+		State.WALK: return "WALK"
+		State.JUMP_START: return "JUMP_START"
+		State.JUMP: return "JUMP"
+		State.FALL: return "FALL"
+		State.ATTACK: return "ATTACK"
+		State.HIT: return "HIT"
+		State.BLOCK: return "BLOCK"
+		State.DEAD: return "DEAD"
+		_: return "UNKNOWN"
+
 
 func can_jump() -> bool:
 	return is_on_floor() and can_act and current_state in [State.IDLE, State.WALK]
