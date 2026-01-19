@@ -301,7 +301,7 @@ func take_damage(amount: int, attacker_position: Vector2) -> void:
 	print("[%s] Took %d damage | Health: %d/%d" % [name, amount, health, max_health])
 
 	# Apply knockback
-	var knockback_dir: float = sign(global_position.x - attacker_position.x)
+	var knockback_dir: int = sign(global_position.x - attacker_position.x)
 	if knockback_dir == 0:
 		knockback_dir = -1 if is_facing_right else 1
 	velocity.x = knockback_dir * knockback_force

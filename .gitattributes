@@ -4,10 +4,7 @@
 *.gd diff=gd
 *.shader diff=gd
 
-# Normalize line endings
-* text=auto eol=lf
-
-# Binary files
+# Binary files (must be before wildcard text rule)
 *.translation binary
 *.import binary
 *.ctex binary
@@ -18,3 +15,6 @@
 *.png binary
 *.jpg binary
 *.webp binary
+
+# Normalize line endings for text files
+* text=auto eol=lf
