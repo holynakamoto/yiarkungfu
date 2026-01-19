@@ -148,7 +148,7 @@ func _execute_move(button: String) -> void:
 
 	# Look up animation in move matrix
 	if move_key in move_matrix:
-		var animation_name := move_matrix[move_key]
+		var animation_name: String = move_matrix[move_key]
 		perform_attack(animation_name)
 		print("[Player] Execute: %s -> %s" % [move_key, animation_name])
 	else:
